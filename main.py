@@ -29,8 +29,4 @@ jayApiUser = os.environ['JAY_API_USER']
 jayApiPassword = os.environ['JAY_API_PASSWORD']
 token = login(jayApiUser, jayApiPassword)
 for hisItem in hisItems:
-  success = createHis(hisItem, token)
-  if success:
-    print(f'Success: {hisItem.pointId} at {hisItem.ts}')
-  else:
-    print(f'Failed: {hisItem.pointId} at {hisItem.ts}')
+  createHis(hisItem, token)
