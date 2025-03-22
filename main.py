@@ -6,7 +6,7 @@ from jaysApi import login, createHis, HisItem
 
 load_dotenv()
 
-stationId = 'QHW'
+stationId = 'WBB' # U of U William Browning Building
 observations = latestObservations(stationId)
 
 properties = {
