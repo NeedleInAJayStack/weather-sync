@@ -7,7 +7,9 @@ headers = {
 
 def latestObservations(stationId):
   url = f'https://api.weather.gov/stations/{stationId}/observations/latest'
-  latestObservation = requests.get(url, headers=headers).json()
+  response = requests.get(url, headers=headers)
+  response.raise_for_status()
+  latestObservation = response.json()
 
   timestamp = latestObservation['timestamp']
 
@@ -16,7 +18,6 @@ def latestObservations(stationId):
     if (not propertyName.startswith('@')) and isinstance(object, dict) and object.get('value') != None:
       value = object['value']
       observations.append(Observation(propertyName, timestamp, value))
-
   return observations
 
 class Observation:
