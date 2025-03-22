@@ -25,8 +25,12 @@ for observation in observations:
   pointId = properties[observation.name]
   hisItems.append(HisItem(pointId, observation.ts, observation.value))
 
+if len(hisItems) == 0:
+  raise Exception("No historical values found. Check weather station.")
+
 jayApiUser = os.environ['JAY_API_USER']
 jayApiPassword = os.environ['JAY_API_PASSWORD']
 token = login(jayApiUser, jayApiPassword)
 for hisItem in hisItems:
   createHis(hisItem, token)
+
